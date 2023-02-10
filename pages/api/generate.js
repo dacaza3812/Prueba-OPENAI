@@ -19,7 +19,7 @@ export default async function (req, res) {
   if (animal.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: "Please enter a valid animal",
+        message: "Porfavor introduzca un mensaje",
       }
     });
     return;
@@ -53,6 +53,6 @@ export default async function (req, res) {
 function generatePrompt(animal) {
   const capitalizedAnimal =
     animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return ` ${capitalizedAnimal}
+  return ` El siguiente texto es el resultado de una grabacion de una llamada, se necesita extraer el problema, si el problema tiene que ver con informàtica o comunicaciones, el nombre de la persona, telèfono, nombre del departamento y de la UEB, ademàs si es posible, darle una soluciòn a su problema dependiendo del problema. El texto es el siguiente: ${capitalizedAnimal}
 `;
 }
