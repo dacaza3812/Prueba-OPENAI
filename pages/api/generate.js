@@ -30,7 +30,7 @@ export default async function (req, res) {
       model: "text-davinci-003",
       prompt: generatePrompt(animal),
       //prompt: "cual es el resultado de calcular dos mas dos",
-      temperature: 0.6,
+      temperature: 0.7,
       max_tokens: 2000,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
@@ -53,6 +53,14 @@ export default async function (req, res) {
 function generatePrompt(animal) {
   const capitalizedAnimal =
     animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return ` El siguiente texto es el resultado de una grabacion de una llamada, se necesita extraer el problema, si el problema tiene que ver con informàtica o comunicaciones, el nombre de la persona, telèfono, nombre del departamento y de la UEB, ademàs si es posible, darle una soluciòn a su problema dependiendo del problema. El texto es el siguiente: ${capitalizedAnimal}
+  return ` El siguiente texto es el resultado de una grabacion de una llamada, se necesita extraer el "problema", si el problema tiene que ver con informatica o comunicaciones, el "nombre" de la persona, "telefono", nombre del departamento y de la UEB, ademas de una "solucion" al problema en cuestion, y devuelve la informacion como un json, con todo en minusculas y sin tildes. El texto es el siguiente: ${capitalizedAnimal}
 `;
 }
+/*
+function generatePrompt(animal) {
+  const capitalizedAnimal =
+    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
+  return ` A continuacion se proporciona cierta informacion. Si la misma tiene que ver con problemas del fluido electrico, o falta de corriente devuelve: "Problema de Corriente". En caso de ser un problema que trate sobre informatica y comunicaciones devuelve: "InfoCom". En caso de no poder detectar el tipo de informacion devuleva un mensaje de forma chistosa sobre cualquier solucion. El texto es el siguiente: ${capitalizedAnimal}
+`;
+}
+*/

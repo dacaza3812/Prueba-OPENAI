@@ -31,6 +31,22 @@ export default function Home() {
     }
   }
 
+  
+  
+  let string = result;
+  let objeto = eval("(" + string + ")");
+  if(!objeto){
+    objeto = "";
+  }
+/*
+  console.log(objeto.problema);
+  console.log(objeto.nombre);
+  console.log(objeto.telefono);
+  console.log(objeto.departamento);
+  console.log(objeto.solucion);
+*/
+
+console.log(result);
   return (
     <div>
       <Head>
@@ -51,7 +67,14 @@ export default function Home() {
           />
           <input type="submit" value="Generar Respuesta" />
         </form>
-        <div className={styles.result}>{result}</div>
+        { <div className={styles.result}>
+          <p>Problema: {objeto.problema}</p>
+          <p>Nombre: {objeto.nombre}</p>
+          <p>Telefono: {objeto.telefono}</p>
+          <p>Departamento: {objeto.departamento}</p>
+          <p>Posible Solucion: {objeto.solucion}</p>
+          <p>UEB: {objeto.ueb}</p>
+        </div> }{result}
       </main>
     </div>
   );
