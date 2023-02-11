@@ -32,12 +32,14 @@ export default function Home() {
   }
 
   
+    let string = result;
+    let objeto = eval("(" + string + ")")
+
   
-  let string = result;
-  let objeto = eval("(" + string + ")");
   if(!objeto){
-    objeto = "";
+    objeto = "prueba";
   }
+  console.log(objeto);
 /*
   console.log(objeto.problema);
   console.log(objeto.nombre);
@@ -46,7 +48,6 @@ export default function Home() {
   console.log(objeto.solucion);
 */
 
-console.log(result);
   return (
     <div>
       <Head>
