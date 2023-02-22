@@ -47,6 +47,7 @@ export default function Home() {
   console.log(objeto.departamento);
   console.log(objeto.solucion);
 */
+console.log(objeto);
 
   return (
     <div>
@@ -68,14 +69,18 @@ export default function Home() {
           />
           <input type="submit" value="Generar Respuesta" />
         </form>
-        { <div className={styles.result}>
+        { 
+        <div className={styles.result}>
           <p>Problema: {objeto.problema}</p>
           <p>Nombre: {objeto.nombre}</p>
           <p>Telefono: {objeto.telefono}</p>
           <p>Departamento: {objeto.departamento}</p>
           <p>Posible Solucion: {objeto.solucion}</p>
           <p>UEB: {objeto.ueb}</p>
-        </div> }{result}
+          <p>Asignado:{objeto.asignado}</p>
+        </div> 
+        }
+        {/*result*/}
       </main>
     </div>
   );

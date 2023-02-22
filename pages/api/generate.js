@@ -53,7 +53,7 @@ export default async function (req, res) {
 function generatePrompt(animal) {
   const capitalizedAnimal =
     animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return ` El siguiente texto es el resultado de una grabacion de una llamada, se necesita extraer el "problema", si el problema tiene que ver con informatica o comunicaciones, el "nombre" de la persona, "telefono", nombre del departamento y de la UEB, ademas de una "solucion" al problema en cuestion, y devuelve la informacion como un json, con todo en minusculas y sin tildes. El texto es el siguiente: ${capitalizedAnimal}
+  return `extrae el "problema", "asignado" si el problema tiene que ver con "informatica" o "comunicaciones", el "nombre" de la persona, "telefono", nombre del departamento y de la UEB, ademas de una "solucion" al problema en cuestion, y devuelve la informacion como un json, con todo en minusculas y sin tildes. El texto es el siguiente: ${capitalizedAnimal}
 `;
 }
 /*
