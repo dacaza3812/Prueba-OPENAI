@@ -60,7 +60,7 @@ console.log(objeto);
 
       <main className={styles.main}>
         <img src="/dog.png" className={styles.icon} />
-        <h3>CHAT GPT</h3>
+        <h3>Sistema de Gestion de Incidencias con AI</h3>
         <form onSubmit={onSubmit}>
           <input
             type="text"
