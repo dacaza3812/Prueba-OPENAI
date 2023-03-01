@@ -1,7 +1,8 @@
-import { Configuration, OpenAIApi } from "openai";
+//import { Configuration, OpenAIApi } from "openai";
+const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
@@ -26,14 +27,22 @@ export default async function (req, res) {
   }
 
   try {
-    const completion = await openai.createCompletion({
+    const openai = new OpenAIApi(configuration);
+    const params = {
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: generatePrompt(animal) }],
+    };
+    /*const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: generatePrompt(animal),
       //prompt: "cual es el resultado de calcular dos mas dos",
       temperature: 0.7,
       max_tokens: 2000,
-    });
-    res.status(200).json({ result: completion.data.choices[0].text });
+    });*/
+    const completion = await openai.createChatCompletion(params);
+    const data = completion.data.choices[0].message.content;
+    console.log(data);
+    res.status(200).json({ result: data });
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
@@ -53,7 +62,7 @@ export default async function (req, res) {
 function generatePrompt(animal) {
   const capitalizedAnimal =
     animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `extrae el "problema", "asignado" si el problema tiene que ver con "informatica" o "comunicaciones", el "nombre" de la persona, "telefono", nombre del departamento y de la UEB, ademas de una "solucion" al problema en cuestion, y devuelve la informacion como un json, con todo en minusculas y sin tildes. El texto es el siguiente: ${capitalizedAnimal}
+  return `extrae el "problema", "asignado" si el problema tiene que ver con "informatica" o "comunicaciones", el "nombre" de la persona, "telefono", nombre del departamento y de la UEB (que puedeb ser de Las Tunas, Puerto Padre, Jesus Menendez, Manati, Jobabo, Majibacoa, Colombia, Amancio), ademas de una "solucion" al problema en cuestion, y devuelve la informacion como un json, con todo en minusculas y sin tildes. El texto es el siguiente: ${capitalizedAnimal}
 `;
 }
 /*

@@ -31,7 +31,6 @@ export default function Home() {
     }
   }
 
-  
     let string = result;
     let objeto = eval("(" + string + ")")
 
@@ -39,7 +38,9 @@ export default function Home() {
   if(!objeto){
     objeto = "prueba";
   }
-  console.log(objeto);
+  console.log("objeto", result);
+
+  
 /*
   console.log(objeto.problema);
   console.log(objeto.nombre);
@@ -48,6 +49,7 @@ export default function Home() {
   console.log(objeto.solucion);
 */
 console.log(objeto);
+
 
   return (
     <div>
@@ -80,7 +82,7 @@ console.log(objeto);
           <p>Asignado:{objeto.asignado}</p>
         </div> 
         }
-        {/*result*/}
+        {result}
       </main>
     </div>
   );
